@@ -1,3 +1,5 @@
+options(repos = c(CRAN = "https://cloud.r-project.org"))  # Or another CRAN mirror URL
+
 # Load all necessary libraries
 packages <- c("readxl", "dplyr", "dataRetrieval", "shiny", "plotly", "rstudioapi", "tidyr", "tidyverse", "pdftools", "rmarkdown", "ggpubr", "grid", "gridExtra")
 
@@ -5,13 +7,14 @@ packages <- c("readxl", "dplyr", "dataRetrieval", "shiny", "plotly", "rstudioapi
 install_missing_packages <- function(packages) {
   new.packages <- packages[!(packages %in% installed.packages()[, "Package"])]
   if (length(new.packages)) {
-    install.packages(new.packages)
+    install.packages(new.packages, repos = c(CRAN = "https://cloud.r-project.org"))  # Set CRAN mirror here
   }
 }
 
 # Install missing packages
 install_missing_packages(packages)
 
+# Explicitly load readxl
 library(readxl)
 
 # Load all packages at once
