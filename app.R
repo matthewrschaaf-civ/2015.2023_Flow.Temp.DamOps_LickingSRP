@@ -1,17 +1,21 @@
-# Load necessary libraries
+# Load all necessary libraries
+packages <- c("readxl", "dplyr", "dataRetrieval", "shiny", "plotly", "rstudioapi", "tidyr", "tidyverse", "pdftools", "rmarkdown", "ggpubr", "grid", "gridExtra")
+
+# Function to check and install missing packages
+install_missing_packages <- function(packages) {
+  new.packages <- packages[!(packages %in% installed.packages()[, "Package"])]
+  if (length(new.packages)) {
+    install.packages(new.packages)
+  }
+}
+
+# Install missing packages
+install_missing_packages(packages)
+
 library(readxl)
-library(dplyr)
-library(dataRetrieval)
-library(shiny)
-library(plotly)
-library(rstudioapi)
-library(tidyr)
-library(tidyverse)
-library(pdftools)
-library(rmarkdown)
-library(ggpubr)
-library(grid)
-library(gridExtra)
+
+# Load all packages at once
+lapply(packages, library, character.only = TRUE)
 
 # Define the data directory
 data_dir <- "data"
