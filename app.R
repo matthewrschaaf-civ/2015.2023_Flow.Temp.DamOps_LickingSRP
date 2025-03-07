@@ -1,21 +1,30 @@
+# Set working directory to the project directory
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+
 options(repos = c(CRAN = "https://cloud.r-project.org"))  # Or another CRAN mirror URL
 
 # Load all necessary libraries
-packages <- c("readxl", "dplyr", "dataRetrieval", "shiny", "plotly", "rstudioapi", "tidyr", "tidyverse", "pdftools", "rmarkdown", "ggpubr", "grid", "gridExtra")
+packages <- c("readxl", "dataRetrieval", "shiny", "plotly", "rstudioapi", "tidyverse")
 
 # Function to check and install missing packages
 install_missing_packages <- function(packages) {
   new.packages <- packages[!(packages %in% installed.packages()[, "Package"])]
   if (length(new.packages)) {
-    install.packages(new.packages, repos = c(CRAN = "https://cloud.r-project.org"))  # Set CRAN mirror here
+    install.packages(new.packages, repos = c(CRAN = "https://cloud.r-project.org"))
   }
 }
 
 # Install missing packages
 install_missing_packages(packages)
 
-# Explicitly load readxl
+# Explicitly load library calls
 library(readxl)
+library(dataRetrieval)
+library(shiny)
+library(plotly)
+library(rstudioapi)
+library(tidyverse)
+
 
 # Load all packages at once
 lapply(packages, library, character.only = TRUE)
