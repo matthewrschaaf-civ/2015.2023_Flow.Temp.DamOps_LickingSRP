@@ -1,6 +1,3 @@
-# Set working directory to the project directory
-setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-
 options(repos = c(CRAN = "https://cloud.r-project.org"))  # Or another CRAN mirror URL
 
 # Load all necessary libraries
